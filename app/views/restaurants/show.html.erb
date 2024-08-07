@@ -1,0 +1,27 @@
+<div>
+  <h1><%= @restaurant.name %></h1>
+  <p><%= @restaurant.address %></p>
+  <p><%= @restaurant.phone_number %></p>
+</div>
+
+<div>
+    <%= link_to 'Back', restaurants_path, class: 'btn btn-secondary mt-2' %>
+</div>
+
+<div>
+  <h3>Reviews</h3>
+  <ul>
+    <% if @restaurant.reviews.any? %>
+      <% @restaurant.reviews.each do |review| %>
+        <li>
+          <%= review.rating %>
+          <%= review.content %>
+          <%= link_to 'x', review_path(review), data: { turbo_method: :delete, turbo_confirm: 'Delete Review?' } %>
+        </li>
+      <% end %>
+    <% else %>
+      <li>No reviews yet.</li>
+    <% end %>
+    <p><%= link_to 'Add Review', new_restaurant_review_path(@restaurant) %></p>
+  </ul>
+</div>

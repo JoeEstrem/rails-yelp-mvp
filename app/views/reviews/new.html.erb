@@ -1,0 +1,14 @@
+<div class="container">
+  <h1>Add Review</h1>
+  <%= simple_form_for [@restaurant, @review] do |f| %>
+    <%= f.input :content %>
+    <%= f.label :rating, 'Rating' %><br>
+    <%= f.collection_radio_buttons :rating, (0..5), :to_s, :to_s do |b| %>
+      <%= b.label(class: "btn btn-outline-secondary") do %>
+        <%= b.radio_button %> <%= b.text %>
+      <% end %>
+    <% end %>
+    <%= f.submit 'Submit', class: 'btn btn-info mt-2' %>
+    <%= button_tag 'Back', type: 'button', class: 'btn btn-secondary mt-2', onclick: 'window.history.back()' %>
+  <% end %>
+</div>

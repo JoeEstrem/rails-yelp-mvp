@@ -1,0 +1,8 @@
+<%= simple_form_for @restaurant do |f| %>
+  <%= f.input :name %>
+  <%= f.input :address %>
+  <%= f.input :phone_number %>
+  <%= f.input :category, collection: Restaurant::CATEGORY.sort, include_blank: false, label: 'Category', input_html: { class: 'form-select' } %>
+  <%= f.submit 'Submit', class: 'btn btn-info mt-2' %>
+  <%= button_tag 'Back', type: 'button', class: 'btn btn-secondary mt-2', onclick: 'window.history.back()' %>
+<% end %>
